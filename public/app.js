@@ -47,7 +47,7 @@ config(['$locationProvider', '$routeProvider', '$httpProvider', function($locati
 ])
 .controller("AuthCtrl", ['$window',
     function($window) {
-        console.log("Loging in");
+        
         $window.location.href = 'https://apps.na.collabserv.com/manage/oauth2/authorize?callback_uri=' +
                         encodeURIComponent('https://<appName>.mybluemix.net/#/auth/ibm-connections-cloud/callback') +
                         '&client_id=<client_id>&response_type=code';
@@ -79,7 +79,7 @@ config(['$locationProvider', '$routeProvider', '$httpProvider', function($locati
 .run(function($rootScope, $window, $location, Auth){
     
     $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
-        console.log("Changing route");
+        
         if (!Auth.isLoggedIn()) {
             $rootScope.isUserLoggedIn = false;
             if ($location.path() != '/auth/ibm-connections-cloud/callback' && $location.path() != '' && $location.path() != '/about') {
